@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=exa
 pkgname=${_pkgname}-git
-pkgver=991
+pkgver=v0.9.0.r80.78ba0b8
 pkgrel=1
 pkgdesc='Replacement for ls written in Rust.'
 arch=('i686' 'x86_64')
@@ -16,11 +16,18 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+    # Original
+    # git rev-list --count HEAD
+
+    # Git, tags available
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+
+    # Git, no tags available
+    # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-    make -C "$pkgname"
+build() {
+    make -C "$srcdir/$_pkgname"
 }
 
 package() {
