@@ -41,6 +41,6 @@ package() {
 	install -Dm644 contrib/completions.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
     install -Dm644 LICEN?E \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/$_pkgname/contrib/man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
